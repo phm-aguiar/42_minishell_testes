@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   readlines.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/22 12:13:42 by phenriq2          #+#    #+#             */
-/*   Updated: 2023/12/29 10:25:05 by phenriq2         ###   ########.fr       */
+/*   Created: 2023/12/29 10:18:27 by phenriq2          #+#    #+#             */
+/*   Updated: 2023/12/29 10:42:56 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../includes/minishell.h"
 
-# include "../libs/libft/libft.h"
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+void	readlines(void)
+{
+	char	*input;
 
-void	readlines(void);
-
-#endif
+	using_history();
+	while (1)
+	{
+		input = readline("MiniShell: PWD$ ");
+		add_history(input);
+		if (ft_strcmp(input, "exit()") == 0)
+		{
+			free(input);
+			break ;
+		}
+		free(input);
+	}
+	rl_clear_history();
+}

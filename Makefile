@@ -13,6 +13,7 @@ CYAN = \033[1;35m
 RESET = \033[0m
 
 CFILES = main.c \
+		readlines.c \
 
 OBJECTS = $(addprefix $(OBJ_PATH), $(CFILES:.c=.o))
 
@@ -57,6 +58,6 @@ make_temp:
 	@mkdir -p $(TEMP_PATH)
 
 tests: make_temp all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=./temp/sup.sup --verbose --log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
 
 .PHONY: all clean fclean re libft make_temp tests

@@ -1,0 +1,171 @@
+==124076== Memcheck, a memory error detector
+==124076== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==124076== Using Valgrind-3.22.0-bd4db67b1d-20231031 and LibVEX; rerun with -h for copyright info
+==124076== Command: ./minishell
+==124076== Parent PID: 124073
+==124076== 
+--124076-- 
+--124076-- Valgrind options:
+--124076--    --leak-check=full
+--124076--    --show-leak-kinds=all
+--124076--    --track-origins=yes
+--124076--    --suppressions=./temp/sup.sup
+--124076--    --verbose
+--124076--    --log-file=temp/valgrind.log
+--124076-- Contents of /proc/version:
+--124076--   Linux version 6.6.6-76060606-generic (jenkins@warp.pop-os.org) (x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04) 12.3.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #202312111032~1702306143~22.04~d28ffec SMP PREEMPT_DYNAMIC Mon D
+--124076-- 
+--124076-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--124076-- Page sizes: currently 4096, max supported 4096
+--124076-- Valgrind library directory: /snap/valgrind/160/usr/libexec/valgrind
+--124076-- Reading syms from /home/zeenyt/42/Level_2/42_minishell/minishell
+--124076-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--124076--   Considering /usr/lib/debug/.build-id/cc/cdd41e22e25f77a8cda3d045c57ffdb01a9793.debug ..
+--124076--   .. build-id is valid
+--124076-- Reading syms from /snap/valgrind/160/usr/libexec/valgrind/memcheck-amd64-linux
+--124076--    object doesn't have a dynamic symbol table
+--124076-- Scheduler: using generic scheduler lock implementation.
+--124076-- Reading suppressions file: ./temp/sup.sup
+--124076-- Reading suppressions file: /snap/valgrind/160/usr/libexec/valgrind/default.supp
+==124076== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-124076-by-zeenyt-on-???
+==124076== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-124076-by-zeenyt-on-???
+==124076== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-124076-by-zeenyt-on-???
+==124076== 
+==124076== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==124076== don't want to do, unless you know exactly what you're doing,
+==124076== or are doing some strange experiment):
+==124076==   /snap/valgrind/160/usr/libexec/valgrind/../../bin/vgdb --pid=124076 ...command...
+==124076== 
+==124076== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==124076==   /path/to/gdb ./minishell
+==124076== and then give GDB the following command
+==124076==   target remote | /snap/valgrind/160/usr/libexec/valgrind/../../bin/vgdb --pid=124076
+==124076== --pid is optional if only one valgrind process is running
+==124076== 
+--124076-- Warning: inlined fn name without absori
+--124076-- is shown as UnknownInlinedFun
+--124076-- REDIR: 0x402aa40 (ld-linux-x86-64.so.2:strlen) redirected to 0x581f34c2 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--124076-- REDIR: 0x402a810 (ld-linux-x86-64.so.2:index) redirected to 0x581f34dc (vgPlain_amd64_linux_REDIR_FOR_index)
+--124076-- Reading syms from /snap/valgrind/160/usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--124076-- Reading syms from /snap/valgrind/160/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==124076== WARNING: new redirection conflicts with existing -- ignoring it
+--124076--     old: 0x0402aa40 (strlen              ) R-> (0000.0) 0x581f34c2 vgPlain_amd64_linux_REDIR_FOR_strlen
+--124076--     new: 0x0402aa40 (strlen              ) R-> (2007.0) 0x04e0e090 strlen
+--124076-- REDIR: 0x4027220 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4e0f2c0 (strcmp)
+--124076-- REDIR: 0x402afa0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4e13060 (mempcpy)
+--124076-- Reading syms from /usr/lib/x86_64-linux-gnu/libreadline.so.8.1
+--124076-- Reading syms from /usr/lib/x86_64-linux-gnu/libhistory.so.8.1
+--124076-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--124076--   Considering /usr/lib/debug/.build-id/20/3de0ae33b53fee1578b117cb4123e85d0534f0.debug ..
+--124076--   .. build-id is valid
+==124076== WARNING: new redirection conflicts with existing -- ignoring it
+--124076--     old: 0x050bec60 (memalign            ) R-> (1011.0) 0x04e0cb14 memalign
+--124076--     new: 0x050bec60 (memalign            ) R-> (1017.0) 0x04e0d291 aligned_alloc
+==124076== WARNING: new redirection conflicts with existing -- ignoring it
+--124076--     old: 0x050bec60 (memalign            ) R-> (1011.0) 0x04e0cb14 memalign
+--124076--     new: 0x050bec60 (memalign            ) R-> (1017.0) 0x04e0d125 aligned_alloc
+==124076== WARNING: new redirection conflicts with existing -- ignoring it
+--124076--     old: 0x050bec60 (memalign            ) R-> (1011.0) 0x04e0cb14 memalign
+--124076--     new: 0x050bec60 (memalign            ) R-> (1017.0) 0x04e0d291 aligned_alloc
+==124076== WARNING: new redirection conflicts with existing -- ignoring it
+--124076--     old: 0x050bec60 (memalign            ) R-> (1011.0) 0x04e0cb14 memalign
+--124076--     new: 0x050bec60 (memalign            ) R-> (1017.0) 0x04e0d125 aligned_alloc
+--124076-- Reading syms from /usr/lib/x86_64-linux-gnu/libtinfo.so.6.3
+--124076-- REDIR: 0x50c1720 (libc.so.6:strnlen) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c19e0 (libc.so.6:strpbrk) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c12e0 (libc.so.6:strcmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50dfcd0 (libc.so.6:wcsnlen) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c26d0 (libc.so.6:memset) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50de540 (libc.so.6:wcslen) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2c10 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50de370 (libc.so.6:wcschr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1260 (libc.so.6:index) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1960 (libc.so.6:rindex) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c25a0 (libc.so.6:memmove) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+==124076== Preferring higher priority redirection:
+--124076--     old: 0x051b95c0 (__memcpy_avx_unalign) R-> (2018.0) 0x04e105c0 __memcpy_avx_unaligned_erms
+--124076--     new: 0x051b95c0 (__memcpy_avx_unalign) R-> (2018.1) 0x04e12040 memmove
+--124076-- REDIR: 0x50de3f0 (libc.so.6:wcscmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c29e0 (libc.so.6:stpncpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50de9b0 (libc.so.6:wmemchr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1830 (libc.so.6:strncmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2a70 (libc.so.6:strcasecmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1420 (libc.so.6:strcspn) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50de470 (libc.so.6:wcscpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c11d0 (libc.so.6:strcat) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2b60 (libc.so.6:strncasecmp_l) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2480 (libc.so.6:bcmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50ca570 (libc.so.6:memrchr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c4010 (libc.so.6:strchrnul) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1390 (libc.so.6:strcpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2b10 (libc.so.6:strcasecmp_l) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c16a0 (libc.so.6:strlen) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c18d0 (libc.so.6:strncpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50dea40 (libc.so.6:wmemcmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2950 (libc.so.6:stpcpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c23f0 (libc.so.6:memchr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c1b00 (libc.so.6:strspn) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c27d0 (libc.so.6:mempcpy) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2ac0 (libc.so.6:strncasecmp) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c3f80 (libc.so.6:rawmemchr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c17a0 (libc.so.6:strncat) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x514d090 (libc.so.6:__memcpy_chk) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x50c2310 (libc.so.6:strstr) redirected to 0x4a006e8 (_vgnU_ifunc_wrapper)
+--124076-- REDIR: 0x51b6410 (libc.so.6:__strrchr_avx2) redirected to 0x4e0da10 (rindex)
+--124076-- REDIR: 0x51b65e0 (libc.so.6:__strlen_avx2) redirected to 0x4e0dfd0 (strlen)
+--124076-- REDIR: 0x50be0a0 (libc.so.6:malloc) redirected to 0x4e05053 (malloc)
+--124076-- REDIR: 0x51b95c0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4e12040 (memmove)
+--124076-- REDIR: 0x51b6200 (libc.so.6:__strchrnul_avx2) redirected to 0x4e12b90 (strchrnul)
+--124076-- REDIR: 0x505e150 (libc.so.6:setenv) redirected to 0x4e13bf0 (setenv)
+--124076-- REDIR: 0x51b5f80 (libc.so.6:__strchr_avx2) redirected to 0x4e0dc30 (index)
+--124076-- REDIR: 0x51b1b80 (libc.so.6:__strncmp_avx2) redirected to 0x4e0e6d0 (strncmp)
+--124076-- REDIR: 0x50be740 (libc.so.6:realloc) redirected to 0x4e0c86b (realloc)
+--124076-- REDIR: 0x51b9580 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4e12ca0 (mempcpy)
+--124076-- REDIR: 0x51b1740 (libc.so.6:__strcmp_avx2) redirected to 0x4e0f180 (strcmp)
+--124076-- REDIR: 0x50bf520 (libc.so.6:calloc) redirected to 0x4e0c65f (calloc)
+--124076-- REDIR: 0x51b6760 (libc.so.6:__strnlen_avx2) redirected to 0x4e0df70 (strnlen)
+--124076-- REDIR: 0x50be3e0 (libc.so.6:free) redirected to 0x4e082c9 (free)
+--124076-- REDIR: 0x51b7ab0 (libc.so.6:__strcpy_avx2) redirected to 0x4e0e0b0 (strcpy)
+--124076-- REDIR: 0x50c1fc0 (libc.so.6:__GI_strstr) redirected to 0x4e13250 (__strstr_sse2)
+--124076-- REDIR: 0x51b9590 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4e13150 (__memcpy_chk)
+--124076-- REDIR: 0x51b9d80 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4e11f30 (memset)
+--124076-- REDIR: 0x51b7e40 (libc.so.6:__strncpy_avx2) redirected to 0x4e0e290 (strncpy)
+--124076-- REDIR: 0x51b20c0 (libc.so.6:__memchr_avx2) redirected to 0x4e0f360 (memchr)
+--124076-- REDIR: 0x51b87a0 (libc.so.6:__stpcpy_avx2) redirected to 0x4e117e0 (stpcpy)
+--124076-- REDIR: 0x51b2f30 (libc.so.6:__strcasecmp_avx) redirected to 0x4e0e9d0 (strcasecmp)
+--124076-- REDIR: 0x51b45b0 (libc.so.6:__strncasecmp_avx) redirected to 0x4e0eab0 (strncasecmp)
+--124076-- REDIR: 0x51b2880 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4e11680 (bcmp)
+==124076== 
+==124076== HEAP SUMMARY:
+==124076==     in use at exit: 208,217 bytes in 223 blocks
+==124076==   total heap usage: 451 allocs, 228 frees, 229,365 bytes allocated
+==124076== 
+==124076== Searching for pointers to 223 not-freed blocks
+==124076== Checked 265,816 bytes
+==124076== 
+==124076== 32 bytes in 1 blocks are definitely lost in loss record 13 of 64
+==124076==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==124076==    by 0x488CBAC: xmalloc (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x48837C2: rl_add_undo (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x4883F4C: rl_insert_text (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x4885411: _rl_insert_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x488A154: rl_insert (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x486AE97: _rl_dispatch_subseq (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x486BCC9: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x4874D14: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==124076==    by 0x1091EF: readlines (src/readlines.c:22)
+==124076==    by 0x109185: main (src/main.c:20)
+==124076== 
+==124076== LEAK SUMMARY:
+==124076==    definitely lost: 32 bytes in 1 blocks
+==124076==    indirectly lost: 0 bytes in 0 blocks
+==124076==      possibly lost: 0 bytes in 0 blocks
+==124076==    still reachable: 0 bytes in 0 blocks
+==124076==         suppressed: 208,185 bytes in 222 blocks
+==124076== 
+==124076== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+--124076-- 
+--124076-- used_suppression:     62 <Readline> ./temp/sup.sup:2 suppressed: 204,169 bytes in 221 blocks
+--124076-- used_suppression:      1 <Readline/AddHistory> ./temp/sup.sup:10 suppressed: 4,016 bytes in 1 blocks
+==124076== 
+==124076== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
