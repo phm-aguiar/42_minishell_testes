@@ -58,6 +58,6 @@ make_temp:
 	@mkdir -p $(TEMP_PATH)
 
 tests: make_temp all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=./temp/sup.sup --verbose --log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=./sup/sup.sup --verbose --log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
 
 .PHONY: all clean fclean re libft make_temp tests
