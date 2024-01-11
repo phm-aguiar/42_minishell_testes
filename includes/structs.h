@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:16:06 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/09 13:56:40 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:52:27 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,31 @@
 */
 typedef struct s_command
 {
-	char				*executable;
-	char				**arguments;
-	int					background;
-}						t_command;
+	char			*executable;
+	char			**arguments;
+	int				background;
+}					t_command;
+
+/**
+ * @brief Enumeração que representa o tipo de token
+ * @param TOKEN_WORD Palavra
+ * @param TOKEN_REDIRECTION Redirecionamento (<, >, >>)
+ * @param TOKEN_PIPE Pipe (|)
+ * @param TOKEN_BACKGROUND Background (&)
+ */
+typedef enum e_token_type
+{
+	TOKEN_WORD,
+	TOKEN_REDIRECTION,
+	TOKEN_PIPE,
+	TOKEN_BACKGROUND
+}					t_token_type;
+
+typedef struct s_token
+{
+	char			*value;
+	t_token_type	type;
+}					t_token;
 
 /**
  * @brief Estrutura que representa uma pipeline
@@ -39,9 +60,9 @@ typedef struct s_command
 
 typedef struct s_pipeline
 {
-	t_command			**commands;
-	int					num_commands;
-}						t_pipeline;
+	t_command		**commands;
+	int				num_commands;
+}					t_pipeline;
 
 /**
  * @brief Estrutura que representa um redirecionamento
@@ -52,9 +73,9 @@ typedef struct s_pipeline
 
 typedef struct s_redirection
 {
-	char				*file;
-	int					type;
-}						t_redirection;
+	char			*file;
+	int				type;
+}					t_redirection;
 
 /**
  * @brief Estrutura que representa um job
@@ -66,10 +87,10 @@ typedef struct s_redirection
 
 typedef struct s_job
 {
-	t_pipeline			*pipeline;
-	t_redirection		*input;
-	t_redirection		*output;
-}						t_job;
+	t_pipeline		*pipeline;
+	t_redirection	*input;
+	t_redirection	*output;
+}					t_job;
 
 /**
  * @brief Estrutura que representa um ambiente
@@ -81,10 +102,10 @@ typedef struct s_job
 
 typedef struct s_environment
 {
-	char				**variables;
-	int					size;
-	int					capacity;
-}						t_environment;
+	char			**variables;
+	int				size;
+	int				capacity;
+}					t_environment;
 
 /**
  * @brief Estrutura que representa um processo
@@ -95,29 +116,24 @@ typedef struct s_environment
 
 typedef struct s_process
 {
-	pid_t				pid;
-	int					status;
-}						t_process;
+	pid_t			pid;
+	int				status;
+}					t_process;
 
 /**
  * @brief Estrutura que contem o signal
  * @param action Ação a ser executada
  */
 
-typedef struct s_signal_handler
-{
-	struct sigaction	action;
-}						t_signal_handler;
-
 typedef struct s_minishell
 {
-	t_environment		*env;
-	t_command			*command;
-	t_pipeline			*pipeline;
-	t_redirection		*redirection;
-	t_job				*job;
-	t_process			*process;
-	t_signal_handler	*signal_handler;
-}						t_minishell;
+	t_environment	*env;
+	t_command		*command;
+	t_pipeline		*pipeline;
+	t_redirection	*redirection;
+	t_job			*job;
+	t_process		*process;
+	t_token			input[1024];
+}					t_minishell;
 
 #endif

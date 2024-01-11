@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:52:05 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/09 13:59:01 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:24:15 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 1)
 		return (0);
 	ft_bzero(&core, sizeof(t_minishell));
-	readlines();
+	readlines(&core);
 	return (0);
 }

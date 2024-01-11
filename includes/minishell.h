@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:13:42 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/09 13:57:33 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:13:16 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@
 # include <termios.h>
 # include <unistd.h>
 
-void	readlines(void);
+void	readlines(t_minishell *core);
 
 #endif
