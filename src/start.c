@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 10:52:05 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/17 12:12:41 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/01/17 12:07:42 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/01/17 12:13:07 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	built_in_array(t_minishell *core)
 {
-	t_minishell	core;
-
-	(void)argv;
-	(void)envp;
-	if (argc != 1)
-		return (0);
-	ft_bzero(&core, sizeof(t_minishell));
-	built_in_array(&core);
-	readlines(&core);
-	input_analysis(&core);
-	return (0);
+	core->built_in[0] = "echo";
+	core->built_in[1] = "cd";
+	core->built_in[2] = "pwd";
+	core->built_in[3] = "export";
+	core->built_in[4] = "unset";
+	core->built_in[5] = "env";
+	core->built_in[6] = "exit";
+	core->built_in[7] = NULL;
 }

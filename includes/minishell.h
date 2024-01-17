@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:13:42 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/11 16:13:16 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:16:35 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # include <unistd.h>
 
 void	readlines(t_minishell *core);
-
+void	built_in_array(t_minishell *core);
+void	input_analysis(t_minishell *core);
 #endif

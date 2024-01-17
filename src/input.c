@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 10:52:05 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/17 12:12:41 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/01/17 12:15:36 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/01/17 16:20:26 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	input_analysis(t_minishell *core)
 {
-	t_minishell	core;
+	char	*command;
+	int		i;
 
-	(void)argv;
-	(void)envp;
-	if (argc != 1)
-		return (0);
-	ft_bzero(&core, sizeof(t_minishell));
-	built_in_array(&core);
-	readlines(&core);
-	input_analysis(&core);
-	return (0);
+	i = 0;
+	command = core->input[0].value;
+	while (core->built_in[i])
+	{
+		if (!ft_strcmp(command, core->built_in[i]))
+			printf("ok");
+	}
 }

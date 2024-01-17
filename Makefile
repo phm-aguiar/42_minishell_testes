@@ -14,6 +14,8 @@ RESET = \033[0m
 
 CFILES = main.c \
 		readlines.c \
+		start.c \
+		input.c \
 
 OBJECTS = $(addprefix $(OBJ_PATH), $(CFILES:.c=.o))
 
