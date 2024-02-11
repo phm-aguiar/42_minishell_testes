@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:13:42 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 19:59:34 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/02/11 13:28:11 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,10 @@ void		set_exit_status(char *error_msg);
 
 // input.c
 
-void		split_by_spaces(void);
+void		split_by_spaces(char *str);
 void		skip_quotes(char *str, int *i);
 void		print_splited(t_splited *splited);
 void		splited_add_back(t_splited **splited, t_splited *new);
 t_splited	*new_node(char *str);
-t_splited	*divide_by_append(char *tmp, t_splited *splited);
-void		split_input(void);
-
+void		replace_input(void);
 #endif

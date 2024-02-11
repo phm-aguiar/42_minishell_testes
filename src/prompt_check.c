@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 08:56:05 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 08:58:36 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/02/11 12:31:42 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_bool	check_forbidden_and(void)
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '\'' || str[i] == '\"')
+			skip_quotes(str, &i);
 		if (str[i] == '&' && str[i + 1] == '&')
 			return (FALSE);
 		i++;
@@ -56,19 +58,13 @@ t_bool	check_forbidden_or(void)
 {
 	char	*str;
 	int		i;
-	char	quote;
 
 	str = get_core()->input;
 	i = 0;
 	while (str[i] && str[i + 1])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
-		{
-			quote = str[i];
-			i++;
-			while (str[i] && str[i] != quote)
-				i++;
-		}
+			skip_quotes(str, &i);
 		if (str[i] == '|' && str[i + 1] == '|')
 			return (FALSE);
 		i++;

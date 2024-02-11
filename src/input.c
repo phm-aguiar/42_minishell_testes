@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:15:36 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 19:56:21 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/02/11 16:20:07 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,20 @@ void	skip_quotes(char *str, int *i)
 		(*i)++;
 }
 
-void	split_by_spaces(void)
-{
-	t_token_process	var;
-	char			*str;
 
-	str = get_core()->input;
-	ft_bzero(&var, sizeof(t_token_process));
-	while (str[var.i])
+
+void	split_by_spaces(char *str)
+{
+	t_splited	*splited;
+	char		*token;
+
+	splited = NULL;
+	token = ft_strtok(str, "£");
+	while (token)
 	{
-		if (str[var.i] == '\'' || str[var.i] == '\"')
-			skip_quotes(str, &var.i);
-		if (ft_isspace(str[var.i]))
-		{
-			splited_add_back(&var.splited, new_node(ft_substr(str, var.start,
-						var.i - var.start)));
-			while (ft_isspace(str[var.i]))
-				var.i++;
-			var.start = var.i;
-		}
-		var.i++;
+		splited_add_back(&splited, new_node(token));
+		token = ft_strtok(NULL, "£");
 	}
-	splited_add_back(&var.splited, new_node(ft_substr(str, var.start, var.i
-				- var.start)));
-	get_core()->splited_input = var.splited;
+	get_core()->splited_input = splited;
+	print_splited(get_core()->splited_input);
 }

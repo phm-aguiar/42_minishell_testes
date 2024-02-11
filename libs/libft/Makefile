@@ -16,7 +16,7 @@ SRCS = ft_atol.c ft_bzero.c ft_calloc.c ft_isalnum.c\
 		get_next_line_utils.c ft_sqrt.c ft_pow.c ft_matrixlen.c ft_matrixdel.c\
 		ft_printf.c ft_tratament_flags.c ft_flags.c ft_flags_base.c ft_strisnumber.c\
 		ft_strcmp.c ft_strip.c ft_isspace.c ft_strtok.c ft_strcspn.c ft_strncpy.c ft_strnspn.c\
-		ft_strspn.c ft_strtok_index.c ft_skip_quotes.c
+		ft_strspn.c ft_strjoin_free.c ft_strstr.c ft_skip_quotes.c ft_replace.c
 
 OBJ_PATH = bin/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
