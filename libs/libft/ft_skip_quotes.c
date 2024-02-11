@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_skip_quotes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 08:24:51 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 14:53:17 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/02/10 17:45:21 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/02/10 17:47:19 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_skip_quotes(char *str, size_t *i)
 {
-	size_t	counter;
+	char	quote;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	counter = 0;
-	while (src[counter] != '\0' && counter < size - 1)
-	{
-		dst[counter] = src[counter];
-		counter++;
-	}
-	dst[counter] = '\0';
-	return (ft_strlen(src));
+	quote = str[*i];
+	(*i)++;
+	while (str[*i] && str[*i] != quote)
+		(*i)++;
 }

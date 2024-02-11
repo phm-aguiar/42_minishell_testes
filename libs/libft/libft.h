@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:11:54 by phenriq2          #+#    #+#             */
-/*   Updated: 2023/12/08 10:43:28 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:20:15 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int					ft_isalnum(int c);
 int					ft_isprint(int c);
 int					ft_isascii(int c);
 int					ft_isalpha(int c);
+int					ft_isspace(int c);
 int					ft_isnonzero_digit(int c);
 int					ft_strisnumber(char *str);
 
@@ -88,6 +89,7 @@ char				*ft_strnew(int counter);
 void				ft_strrev(char *ptr);
 size_t				ft_count_words(char const *s, char c);
 int					ft_strcmp(char *s1, char *s2);
+void				ft_strip(char *str);
 
 // FUNCTIONS MEM LIBFT
 void				*ft_memset(void *array, int value, size_t num);
@@ -155,5 +157,18 @@ int					flag_x(va_list args, int flag);
 int					flag_x2(va_list args, int flag);
 int					flag_p(va_list args);
 int					flag_space(void);
+
+// add na libft
+
+size_t				ft_strcspn(const char *s, const char *reject);
+size_t				ft_strspn(const char *s, const char *accept);
+size_t				ft_strnspn(const char *s, const char *accept, size_t n);
+size_t				ft_strncpy(char *dst, const char *src, size_t len);
+char				*ft_strtok(char *str, const char *delim);
+void				ft_skip_quotes(char *str, size_t *i);
+char				*strtok_index(char *str, const char *delim, size_t *index);
+
+void				ft_strip(char *str);
+int					ft_isspace(int c);
 
 #endif

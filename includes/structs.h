@@ -6,7 +6,7 @@
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:16:06 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/01/17 16:00:16 by phenriq2         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:40:54 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,130 +14,68 @@
 # define STRUCTS_H
 
 # include "minishell.h"
+# define END_FILE "syntax error: unexpected end of file"
+# define FORBIDDEN_AND "syntax error: unexpected token `&&'"
+# define FORBIDDEN_OR "syntax error: unexpected token `||'"
+# define FORBIDDEN_SEMICOLON "syntax error: unexpected token `;'"
+# define FORBIDDEN_BACKGROUND "syntax error: unexpected token `&'"
+# define FORBIDDEN_PIPE "syntax error: unexpected token `|'"
+# define FORBIDDEN_REDIR "syntax error: unexpected token `>'"
+# define FORBIDDEN_REDIR_REVERSE "syntax error: unexpected token `<'"
 
-/**
- * @brief Estrutura que representa um comando
+typedef struct s_token			t_token;
+typedef struct s_minishell		t_minishell;
+typedef struct s_splited		t_splited;
+typedef struct s_token_process	t_token_process;
 
- * @param executable Nome do executável
- * @param arguments Argumentos do comando
- * @param background Flag que indica se o comando deve
- *  executado em background
-*/
-typedef struct s_command
+typedef struct s_token_process
 {
-	char				*executable;
-	char				**arguments;
-	char				**env;
-	int					background;
-	struct s_command	*next;
-}						t_command;
+	t_splited					*splited;
+	char						*tmp;
+	int							start;
+	int							i;
+	char						*str;
 
-/**
- * @brief Enumeração que representa o tipo de token
- * @param TOKEN_WORD Palavra
- * @param TOKEN_REDIRECTION Redirecionamento (<, >, >>)
- * @param TOKEN_PIPE Pipe (|)
- * @param TOKEN_BACKGROUND Background (&)
- */
-typedef enum e_token_type
+	t_splited					*tmp_splited;
+}								t_token_process;
+
+typedef enum e_bool
+{
+	FALSE,
+	TRUE
+}								t_bool;
+
+typedef enum e_tkn_type
 {
 	TOKEN_WORD,
-	TOKEN_REDIRECTION,
 	TOKEN_PIPE,
-	TOKEN_BACKGROUND,
-	TOKEN_HERE_DOC
-}						t_token_type;
-
+	TOKEN_REDIRECT,
+	TOKEN_REDIRECT_REVERSE,
+	TOKEN_APPEND,
+	TOKEN_HERE_DOC,
+}								t_tkn_type;
 typedef struct s_token
 {
-	char				*value;
-	t_token_type		type;
-}						t_token;
+	char						*value;
+	t_tkn_type					type;
+	t_token						*next;
+	t_token						*prev;
 
-/**
- * @brief Estrutura que representa uma pipeline
+}								t_token;
 
- * @param commands Lista de comandos
- * @param num_commands Número de comandos na pipeline
-*/
-
-typedef struct s_pipeline
+typedef struct s_splited
 {
-	t_command			**commands;
-	int					num_commands;
-}						t_pipeline;
-
-/**
- * @brief Estrutura que representa um redirecionamento
-
- * @param file Nome do arquivo para redirecionamento
- * @param type Tipo de redirecionamento (entrada/saída)
-*/
-
-typedef struct s_redirection
-{
-	char				*file;
-	int					type;
-}						t_redirection;
-
-/**
- * @brief Estrutura que representa um job
-
- * @param pipeline Sequência de comandos
- * @param input Redirecionamento de entrada
- * @param output Redirecionamento de saída
-*/
-
-typedef struct s_job
-{
-	t_pipeline			*pipeline;
-	t_redirection		*input;
-	t_redirection		*output;
-}						t_job;
-
-/**
- * @brief Estrutura que representa um ambiente
-
- * @param variables Lista de variáveis de ambiente
- * @param size Número de variáveis de ambiente
- * @param capacity Capacidade máxima da lista de variáveis
-*/
-
-typedef struct s_environment
-{
-	char				**variables;
-	int					size;
-	int					capacity;
-}						t_environment;
-
-/**
- * @brief Estrutura que representa um processo
-
- * @param pid PID do processo
- * @param status Status do processo
-*/
-
-typedef struct s_process
-{
-	pid_t				pid;
-	int					status;
-}						t_process;
-
-/**
- * @brief Estrutura que contem o signal
- * @param action Ação a ser executada
- */
+	char						*splited;
+	t_splited					*next;
+}								t_splited;
 
 typedef struct s_minishell
 {
-	t_environment		*env;
-	t_command			*command;
-	t_pipeline			*pipeline;
-	t_redirection		*redirection;
-	t_job				*job;
-	t_process			*process;
-	t_token				input[1024];
-	char				*built_in[8];
-}						t_minishell;
+	t_token						*token;
+	t_splited					*splited_input;
+	char						*input;
+	t_list						*garbage_collector;
+	int							exit_status;
+}								t_minishell;
 
 #endif

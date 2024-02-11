@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = teste
 LIBFT = libs/libft/libft.a
 CFLAGS = -Wall -Werror -Wextra -O3 -g3 -I/usr/include/readline
 LDFLAGS = -lreadline -lhistory
@@ -16,6 +16,14 @@ CFILES = main.c \
 		readlines.c \
 		start.c \
 		input.c \
+		garbage.c \
+		prompt_check.c \
+		prompt_handling.c \
+		error.c \
+		split_prompt.c \
+
+
+
 
 OBJECTS = $(addprefix $(OBJ_PATH), $(CFILES:.c=.o))
 
@@ -62,7 +70,13 @@ make_temp:
 n: all
 	./$(NAME)
 
-tests: make_temp all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=./sup/sup.sup --verbose --log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
+valgrind: make_temp all
+	@valgrind -s -q --leak-check=full \
+	--show-reachable=yes \
+	--show-leak-kinds=all \
+	--track-origins=yes \
+	--track-fds=yes \
+	--suppressions=./sup/suppresion.supp \
+	--log-file=$(TEMP_PATH)valgrind.log ./$(NAME)
 
 .PHONY: all clean fclean re libft make_temp tests n

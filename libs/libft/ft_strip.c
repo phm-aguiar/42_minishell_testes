@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strip.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 08:24:51 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 14:53:17 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/02/09 16:15:36 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/02/09 16:15:55 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_strip(char *str)
 {
-	size_t	counter;
+	size_t	len;
+	size_t	start;
+	size_t	end;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	counter = 0;
-	while (src[counter] != '\0' && counter < size - 1)
-	{
-		dst[counter] = src[counter];
-		counter++;
-	}
-	dst[counter] = '\0';
-	return (ft_strlen(src));
+	if (str == NULL || *str == '\0')
+		return ;
+	len = ft_strlen(str);
+	start = 0;
+	end = len - 1;
+	while (start < len && ft_isspace(str[start]))
+		start++;
+	while (end > start && ft_isspace(str[end]))
+		end--;
+	if (start > 0 || end < len - 1)
+		ft_memmove(str, str + start, end - start + 1);
+	str[end - start + 1] = '\0';
 }

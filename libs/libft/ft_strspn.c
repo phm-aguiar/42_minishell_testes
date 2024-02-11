@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strspn.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 08:24:51 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 14:53:17 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/02/10 15:00:01 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/02/10 18:02:18 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strspn(const char *s, const char *accept)
 {
-	size_t	counter;
+	size_t	i;
+	size_t	j;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	counter = 0;
-	while (src[counter] != '\0' && counter < size - 1)
+	i = 0;
+	while (s[i])
 	{
-		dst[counter] = src[counter];
-		counter++;
+		j = 0;
+		while (accept[j])
+		{
+			if (s[i] == accept[j])
+				break ;
+			j++;
+		}
+		if (!accept[j])
+			return (i);
+		i++;
 	}
-	dst[counter] = '\0';
-	return (ft_strlen(src));
+	return (i);
 }

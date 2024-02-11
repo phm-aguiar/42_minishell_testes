@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phenriq2 <phenriq2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 08:24:51 by phenriq2          #+#    #+#             */
-/*   Updated: 2024/02/10 14:53:17 by phenriq2         ###   ########.fr       */
+/*   Created: 2024/02/10 14:00:19 by phenriq2          #+#    #+#             */
+/*   Updated: 2024/02/10 17:52:15 by phenriq2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strcspn(const char *s, const char *reject)
 {
-	size_t	counter;
+	size_t	i;
+	size_t	j;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	counter = 0;
-	while (src[counter] != '\0' && counter < size - 1)
+	i = 0;
+	while (s[i])
 	{
-		dst[counter] = src[counter];
-		counter++;
+		j = 0;
+		while (reject[j])
+		{
+			if (s[i] == reject[j])
+				return (i);
+			j++;
+		}
+		i++;
 	}
-	dst[counter] = '\0';
-	return (ft_strlen(src));
+	return (i);
 }
